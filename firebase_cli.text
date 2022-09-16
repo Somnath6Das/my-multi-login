@@ -1,0 +1,27 @@
+
+//connect flutter with cli
+
+dart pub global activate flutterfire_cli
+
+npm install -g firebase-tools
+
+firebase login
+
+firebase logout
+
+flutterfire config \ --project=my-multiple-login-d7a32 \ --out=lib/firebase_options.dart \ --android-app-id=com.helloworld.my_multiple_login
+
+
+
+
+
+//run on chrome
+flutter run -d chrome --web-hostname localhost --web-port 5000
+
+
+
+ //Phone sign in
+  //to stop I am not a verify as a robot screen go to https://console.cloud.google.com/    then  select project from left top nav bar,  then go to left side of nav bar three line icon -> APIs and services -> library -> Search Android device verification -> Enable.
+
+
+
