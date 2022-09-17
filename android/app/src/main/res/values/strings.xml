@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="app_name">my-multiple-login</string>
+        <string name="facebook_app_id">788123785672078</string>
+        <string name="fb_login_protocol_scheme">fb788123785672078</string>
+        <string name="facebook_client_token">4e94bc72f76130406568e632be9941f3</string>
+</resources>
+
+
+
+<!-- for generating sha code run command in // project > android folder ->   ./gradlew signingReport
+paste sha code and generate hash code in this site -> http://tomeko.net/online_tools/hex_to_base64.php
+some changes made for facebookLogin in    ->      android\app\src\main\AndroidManifest.xml
+need to create    ->   android\app\src\main\res\values\strings.xml  -->
