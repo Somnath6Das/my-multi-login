@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../services/firebase_auth_methods.dart';
 import '../widgets/custom_button.dart';
@@ -26,8 +27,13 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
   }
 
   void signUpUser() async {
-    FireBaseAuthMethods(FirebaseAuth.instance)
-        .signUpWithEmail(email: emailController.text.trim(), password: passwordController.text.trim(), context: context);
+    context.read<FireBaseAuthMethods>().signUpWithEmail(
+        email: emailController.text.trim(),
+       password: passwordController.text.trim(),
+        context: context);
+
+    // FireBaseAuthMethods(FirebaseAuth.instance)
+    //     .signUpWithEmail(email: emailController.text.trim(), password: passwordController.text.trim(), context: context);
   }
 
   @override
@@ -46,8 +52,9 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomTextField(
-              keyboardType: TextInputType.emailAddress,
-                controller: emailController, hintText: 'Email address'),
+                keyboardType: TextInputType.emailAddress,
+                controller: emailController,
+                hintText: 'Email address'),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.04,
@@ -55,8 +62,9 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomTextField(
-              keyboardType: TextInputType.text,
-                controller: passwordController, hintText: 'Password'),
+                keyboardType: TextInputType.text,
+                controller: passwordController,
+                hintText: 'Password'),
           ),
           CustomButton(text: 'Register', onTap: signUpUser, color: Colors.green)
         ],

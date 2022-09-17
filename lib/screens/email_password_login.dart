@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_multiple_login/services/firebase_auth_methods.dart';
 import 'package:my_multiple_login/widgets/custom_button.dart';
 import 'package:my_multiple_login/widgets/custom_text_field.dart';
+import 'package:provider/provider.dart';
 import '../widgets/next_screen.dart';
 import 'email_password_signup.dart';
 
@@ -26,10 +27,17 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
   }
 
   loginUser() {
-    FireBaseAuthMethods(FirebaseAuth.instance).loginWithEmail(
+
+     context.read<FireBaseAuthMethods>().loginWithEmail(
         email: emailController.text.trim(),
-        password: passwordController.text.trim(),
+       password: passwordController.text.trim(),
         context: context);
+
+
+    // FireBaseAuthMethods(FirebaseAuth.instance).loginWithEmail(
+    //     email: emailController.text.trim(),
+    //     password: passwordController.text.trim(),
+    //     context: context);
   }
 
   @override

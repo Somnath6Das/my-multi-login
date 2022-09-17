@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_multiple_login/services/firebase_auth_methods.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
@@ -38,8 +39,11 @@ class _PhoneScreenState extends State<PhoneScreen> {
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomTextField(      
-                controller: phoneController, hintText: 'Phone number', keyboardType: TextInputType.phone,),
+            child: CustomTextField(
+              controller: phoneController,
+              hintText: 'Phone number',
+              keyboardType: TextInputType.phone,
+            ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.04,
@@ -51,7 +55,11 @@ class _PhoneScreenState extends State<PhoneScreen> {
   }
 
   void phoneSignIn() {
-    FireBaseAuthMethods(FirebaseAuth.instance)
+    context
+        .read<FireBaseAuthMethods>()
         .phoneSignIn(context, "+91${phoneController.text.trim()}");
+
+    // FireBaseAuthMethods(FirebaseAuth.instance)
+    //     .phoneSignIn(context, "+91${phoneController.text.trim()}");
   }
 }
