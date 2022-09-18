@@ -64,13 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     //     .signInWithFacebook(context);
                   },
                   color: Colors.blueAccent),
-              const SizedBox(height: 10),
-              CustomButton(
-                  text: "Signup with Twitter ",
-                  onTap: () {
-                    nextScreen(context, const EmailPasswordSignup());
-                  },
-                  color: Colors.blue),
+     
+            
             ],
           ),
         ),

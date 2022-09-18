@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_multiple_login/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
-
 import '../services/firebase_auth_methods.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -109,6 +109,11 @@ class FireBaseAuthMethods {
     }
   }
 
+
+
+
+
+
 //phone sign in
   Future<void> phoneSignIn(
     BuildContext context,
