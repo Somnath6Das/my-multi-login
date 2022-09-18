@@ -76,22 +76,20 @@ class FireBaseAuthMethods {
       } else {
         //facing error on this section
         final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-        final GoogleSignInAuthentication? googleAuth =
-            await googleUser?.authentication;
 
-        if (googleAuth?.accessToken != null && googleAuth?.idToken != null) {
-          final credential = GoogleAuthProvider.credential(
-            accessToken: googleAuth?.accessToken,
-            idToken: googleAuth?.idToken,
-          );
-          UserCredential userCredential =
-              await _auth.signInWithCredential(credential);
-
-          print(userCredential);
-
-          // if(userCredential.user != null) {
-          //   if(userCredential.additionalUserInfo!.isNewUser) {}
-          // }
+        if (googleUser != null) {
+          try {
+            final GoogleSignInAuthentication googleAuth =
+                await googleUser.authentication;
+            final credential = GoogleAuthProvider.credential(
+              accessToken: googleAuth.accessToken,
+              idToken: googleAuth.idToken,
+            );
+            UserCredential userCredential =
+                await _auth.signInWithCredential(credential);
+          } on FirebaseAuthException catch (e) {
+            showSnackBar(context, e.message!);
+          }
         }
       }
     } on FirebaseAuthException catch (e) {
