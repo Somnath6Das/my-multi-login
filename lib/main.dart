@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<FireBaseAuthMethods>(
             create: (_) => FireBaseAuthMethods(FirebaseAuth.instance)),
+
+        //stream builder for login state
         StreamProvider(
             create: (context) => context.read<FireBaseAuthMethods>().authState,
             initialData: null)
